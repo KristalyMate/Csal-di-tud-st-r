@@ -1,1 +1,1 @@
-# Csal-di-tud-st-r
+Tagok: Kristály Máté, Fábián Bálint, Dabi Roland
