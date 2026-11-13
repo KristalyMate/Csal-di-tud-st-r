@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Családi tudástár</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>Családi tudástár</h1>
+  <div id="csalad-valto-fejlec" hidden>
+    <select id="aktiv-csalad-select" aria-label="Aktív család"></select>
+  </div>
+  <span id="meghivo-kod" hidden>Meghívókód: <code></code></span>
+  <input id="q" type="search" placeholder="Keresés a bejegyzésekben…" aria-label="Keresés" hidden>
+  <button id="uj" class="btn" type="button" hidden>Új bejegyzés</button>
+  <button id="tagok-btn" class="btn" type="button" hidden>Családtagok</button>
+  <span id="fiok" hidden><span id="ki-nev"></span><button id="kilep" class="btn" type="button">Kilépés</button></span>
+</header>
+
+<!-- Családkezelő / Csatlakozás nézet -->
+<section id="csalad-kezelo" class="csatl" hidden>
+  <h2>Üdv a Családi Tudástárban!</h2>
+  <p>Válassz egy meglévő családot, csatlakozz újhoz meghívókóddal, vagy hozz létre saját családot.</p>
+  
+  <div id="sajat-csaladok-lista" style="margin-bottom: 1.5rem;"></div>
+
+  <hr style="border: 0; border-top: 1px solid var(--line); margin: 1.5rem 0;">
+
+  <h3>Csatlakozás új családhoz</h3>
+  <form id="cs-urlap">
+    <label for="cs-kod">Családi meghívókód</label>
+    <input id="cs-kod" required autocomplete="off">
+    <p id="cs-hiba" class="hiba" role="alert" hidden></p>
+    <button class="btn fo" type="submit">Csatlakozás a családhoz</button>
+  </form>
+
+  <h3 style="margin-top: 2rem;">Vagy saját család létrehozása</h3>
+  <form id="uj-csalad-urlap">
+    <label for="uj-csalad-nev">Család neve</label>
+    <input id="uj-csalad-nev" required autocomplete="off" maxlength="80">
+    <button class="btn" type="submit">Család létrehozása</button>
+  </form>
+</section>
+
+<!-- Fő tartalom (ha ki van választva család) -->
+<div class="wrap" hidden>
+  <nav id="tabs" aria-label="Kategóriák"></nav>
+  <main>
+    <div id="tags" class="tags" aria-label="Címkék"></div>
+    <div id="lista"></div>
+  </main>
+</div>
+
+<!-- Cikk olvasó dialógus -->
+<dialog id="olvaso" aria-labelledby="o-cim"></dialog>
+
+<!-- Családtagok kezelése dialógus (itt válthatnak a felnőttek gyerekből felnőtté) -->
+<dialog id="tagok-modal" aria-labelledby="tm-cim">
+  <h2 id="tm-cim">Családtagok és szerepkörök</h2>
+  <div id="tagok-lista-kontener"></div>
+  <div class="row">
+    <button class="btn m" id="tagok-bezar" type="button">Bezárás</button>
+  </div>
+</dialog>
+
+<!-- Új bejegyzés szerkesztő dialógus -->
+<dialog id="szerk" aria-labelledby="s-cim">
+  <form method="dialog" id="urlap">
+    <h2 id="s-cim">Új bejegyzés</h2>
+    <label for="f-cim">Cím</label>
+    <input id="f-cim" required maxlength="150">
+    <label for="f-kat">Kategória</label>
+    <select id="f-kat" required></select>
+    <label for="f-cimkek">Címkék (vesszővel elválasztva)</label>
+    <input id="f-cimkek" placeholder="pl. gyors, otthon">
+    <label for="f-szoveg">Tartalom</label>
+    <textarea id="f-szoveg" rows="7" required></textarea>
+    <div class="row">
+      <button type="button" class="btn m" id="megse">Mégse</button>
+      <button class="btn fo">Bejegyzés mentése</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Bejelentkezés / Regisztráció dialógus -->
+<dialog id="belepes" aria-labelledby="b-cim">
+  <form id="b-urlap">
+    <h2 id="b-cim">Bejelentkezés</h2>
+    <div id="b-regi" hidden>
+      <label for="b-nev">Neved</label>
+      <input id="b-nev" maxlength="80">
+      <label for="b-szerep">Szereped a családban</label>
+      <input id="b-szerep" maxlength="30" placeholder="pl. Anya, Nagypapa, Unoka">
+    </div>
+    <label for="b-email">E-mail-cím</label>
+    <input id="b-email" type="email" required autocomplete="email">
+    <label for="b-jelszo">Jelszó</label>
+    <input id="b-jelszo" type="password" required autocomplete="current-password">
+    <p id="b-hiba" class="hiba" role="alert" hidden></p>
+    <div class="row">
+      <button type="button" class="btn m" id="b-valt">Új fiókot hozok létre</button>
+      <button class="btn fo" id="b-kuld">Belépés</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

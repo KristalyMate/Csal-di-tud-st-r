@@ -1,0 +1,65 @@
+:root{--bg:#EDF1EE;--card:#fff;--ink:#17302B;--muted:#586B66;--line:#C9D5D0;--brand:#1E4A41;--on:#fff;--star:#8F6A00;color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--bg:#101A18;--card:#182623;--ink:#E6EFEC;--muted:#9BB0AA;--line:#2C4039;--brand:#6FC2AE;--on:#0E1816;--star:#E3B341}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;line-height:1.2}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1rem;padding:1rem clamp(1rem,4vw,2.5rem);background:#1E4A41;color:#fff}
+.top h1{margin:0 auto 0 0;font-size:1.7rem}
+#q{flex:1 1 16rem;max-width:26rem;padding:.6rem .9rem;border:0;border-radius:.4rem;background:#fff;color:#17302B;font:inherit}
+.top :focus-visible{outline-color:#fff}
+.btn{padding:.6rem 1rem;border:2px solid currentColor;border-radius:.4rem;background:transparent;color:inherit;font:inherit;font-weight:600;cursor:pointer}
+.top .btn:hover{background:#fff;color:#1E4A41}
+
+.wrap{display:grid;grid-template-columns:15rem 1fr;gap:2rem;max-width:72rem;margin:0 auto;padding:1.5rem clamp(1rem,4vw,2.5rem)}
+
+/* a kategóriák olyanok, mint egy iratgyűjtő elválasztó fülei */
+#tabs{display:flex;flex-direction:column;gap:.35rem;align-self:start;position:sticky;top:1rem}
+.tab{display:flex;justify-content:space-between;gap:.5rem;padding:.65rem .8rem;border:0;border-left:.6rem solid var(--c);border-radius:0 .4rem .4rem 0;background:var(--card);color:var(--ink);font:inherit;text-align:left;cursor:pointer;box-shadow:0 0 0 1px var(--line)}
+.tab.on{background:var(--c);color:#fff;font-weight:600;box-shadow:none}
+.tab span{opacity:.75}
+
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem}
+.chip{padding:.2rem .75rem;border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--ink);font:inherit;font-size:.875rem;cursor:pointer}
+.chip.on{background:var(--brand);border-color:var(--brand);color:var(--on)}
+
+.kartya{position:relative;margin:0 0 1rem;padding:1rem 1.2rem 1rem 1.4rem;border-left:.6rem solid var(--c);border-radius:0 .4rem .4rem 0;background:var(--card);box-shadow:0 0 0 1px var(--line)}
+.kartya:hover{box-shadow:0 0 0 2px var(--c)}
+.kartya h2{margin:0 0 .3rem;font-size:1.25rem}
+.kartya h2 button{all:unset;cursor:pointer}
+.kartya h2 button::after{content:"";position:absolute;inset:0}
+.kartya h2 button:focus-visible{outline:3px solid var(--brand);outline-offset:6px}
+.kartya p{max-width:65ch;margin:.2rem 0 .6rem}
+.meta{font-size:.85rem;color:var(--muted)}
+.star{color:var(--star);font-weight:600}
+.ures{padding:2rem;border:2px dashed var(--line);border-radius:.4rem;color:var(--muted);text-align:center}
+
+dialog{width:min(42rem,calc(100% - 2rem));max-height:calc(100% - 2rem);padding:1.5rem;border:0;border-radius:.5rem;background:var(--card);color:var(--ink);box-shadow:0 20px 60px #0006}
+dialog::backdrop{background:#0008}
+dialog h2{margin-top:0}
+.text{max-width:65ch;white-space:pre-line}
+label{display:block;margin:.8rem 0 .2rem;font-weight:600}
+input,select,textarea{width:100%;padding:.55rem .7rem;border:1px solid var(--line);border-radius:.35rem;background:var(--bg);color:var(--ink);font:inherit}
+.row{display:flex;justify-content:flex-end;gap:.6rem;margin-top:1.2rem}
+.btn.fo{background:var(--brand);border-color:var(--brand);color:var(--on)}
+.btn.m{color:var(--ink);border-color:var(--line)}
+
+@media(max-width:760px){
+  .wrap{grid-template-columns:1fr}
+  #tabs{flex-direction:row;overflow-x:auto;position:static;padding-bottom:.3rem}
+  .tab{flex:none;gap:.8rem}
+}
+
+[hidden]{display:none!important}
+#fiok{display:flex;align-items:center;gap:.7rem}
+.hiba{margin:.8rem 0 0;color:#B3261E;font-weight:600}
+@media(prefers-color-scheme:dark){.hiba{color:#FF8A80}.btn.veszely{color:#FF8A80;border-color:#FF8A80}}
+.btn.veszely{color:#B3261E;border-color:#B3261E}
+.btn.veszely:hover{background:#B3261E;color:#fff}
+
+.csatl{max-width:30rem;margin:3rem auto;padding:0 1.5rem}
+.csatl .btn{margin-top:1rem}
+
+#meghivo-kod{font-size:.9rem}
+#meghivo-kod code{padding:.15rem .5rem;border-radius:.3rem;background:#ffffff26;user-select:all}
